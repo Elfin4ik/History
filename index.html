@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ ПАВЛО БУТ (ПАВЛЮК): ІСТОРИЧНИЙ ПРОЄКТ (ФІНАЛ)</title>
+    <link href="https://fonts.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. CORE VARIABLES & BASE STYLES (Classic Dark) */
+        :root {
+            --color-dark-bg: #0d0d0d; 
+            --color-card-bg: #1c1c1c; 
+            --color-accent-gold: #c7a47a; 
+            --color-accent-red: #9a031e; 
+            --color-text-light: #f0f0f0; 
+            --color-text-dim: #aaaaaa; 
+            --font-primary: 'Roboto', sans-serif;
+            --font-title: 'Playfair Display', serif;
+            --transition-speed: 0.4s;
+            --shadow-classic: 0 5px 15px rgba(0, 0, 0, 0.5);
+            --border-gold: 2px solid var(--color-accent-gold);
+        }
+
+        /* Універсальний скидання та основні стилі */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-light);
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: radial-gradient(var(--color-card-bg) 5%, transparent 5%);
+            background-size: 40px 40px;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            color: var(--color-accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .module-title {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 3px solid var(--color-accent-red);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            color: var(--color-accent-red);
+        }
+
+        /* 2. HEADER & NAVIGATION MODULE */
+        .hero-module {
+            background-color: #030303;
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50%" x="50%" dominant-baseline="middle" text-anchor="middle" font-size="10" fill="%234A291A">Герб</text></svg>');
+            background-size: cover;
+            padding: 120px 0 40px;
+            border-bottom: 5px double var(--color-accent-gold);
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 4.5em;
+            color: var(--color-accent-gold);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: var(--color-text-dim);
+        }
+
+        .navigation-module {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--color-accent-gold);
+            border: 1px solid var(--color-accent-gold);
+            background-color: rgba(154, 3, 30, 0.4);
+            padding: 8px 18px;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background-color: var(--color-accent-red);
+            border-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-classic);
+        }
+        
+        .active-nav-link {
+            background-color: var(--color-accent-gold);
+            color: var(--color-dark-bg);
+            font-weight: bold;
+        }
+
+        /* 4. CHRONOLOGY & BUTTONS */
+        .timeline-controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timeline-button, .fact-toggle-button {
+            /* Єдиний стиль для всіх кнопок */
+            background-color: var(--color-accent-red);
+            color: #fff;
+            border: 2px solid var(--color-accent-gold);
+            padding: 12px 25px;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        
+        .timeline-button:hover, .fact-toggle-button:hover {
+            background-color: var(--color-accent-gold);
+            color: var(--color-dark-bg);
+        }
+
+        /* Стилі хронології */
+        .timeline-container::after {
+            width: 3px;
+            background-color: var(--color-accent-gold);
+        }
+        
+        /* Додаткові стилі для розширеної хронології */
+        #extra-events .timeline-event {
+            margin-bottom: 40px;
+            opacity: 0.8;
+            transition: opacity 0.5s;
+        }
+        #extra-events .timeline-event:hover {
+            opacity: 1;
+        }
+        #extra-events .event-year {
+            background-color: var(--color-accent-red);
+        }
+        #extra-events .event-details {
+            border: 1px dashed var(--color-accent-red);
+        }
+        
+        /* 5. CONTENT MODULES */
+        .content-module {
+            padding: 40px;
+            margin-bottom: 40px;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-accent-gold);
+            box-shadow: var(--shadow-classic);
+        }
+
+        .text-grid {
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 30px;
+        }
+        .text-grid article {
+            background-color: #282828;
+            padding: 20px;
+            border-left: 5px solid var(--color-accent-gold);
+        }
+
+        /* 6. MEDIA MODULE */
+        .link-list-grid {
+             display: grid; 
+             gap: 15px;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .media-link-item {
+            border: 1px solid var(--color-accent-red);
+            box-shadow: 0 0 8px rgba(154, 3, 30, 0.3);
+            padding: 15px;
+        }
+        
+        .video-link-style {
+            color: var(--color-accent-gold);
+            text-decoration: none;
+            display: block;
+            text-shadow: 0 0 5px rgba(199, 164, 122, 0.5);
+        }
+
+        .video-link-style:hover {
+            color: var(--color-accent-red);
+        }
+
+        /* 8. FOOTER */
+        .footer-module {
+            background-color: #030303;
+            color: var(--color-accent-gold);
+            border-top: 5px double var(--color-accent-gold);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer-module p:last-child {
+            margin-top: 10px;
+            color: var(--color-text-dim);
+        }
+        .back-to-top {
+            color: var(--color-accent-red);
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="hero-module" id="top">
+        <div class="header-overlay">
+            <h1 class="main-title">ПАВЛО БУТ (ПАВЛЮК)</h1>
+            <h2 class="subtitle">ГЕТЬМАНЩИНА. ДОБА ПОВСТАНЬ</h2>
+        </div>
+        <nav class="navigation-module">
+            <a href="#bio-section" class="nav-link">Життєпис</a>
+            <a href="#chronology-section" class="nav-link">Хронологія</a>
+            <a href="#facts-module" class="nav-link">Факти</a>
+            <a href="#media-module" class="nav-link">Відео</a>
+            <a href="#author-section" class="nav-link">Автор</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        
+        <section id="bio-section" class="content-module">
+            <h3 class="module-title">📜 Життєпис та Причини Повстання</h3>
+            <div class="text-grid">
+                <article>
+                    <h4>Козацький Шлях</h4>
+                    <p>Павло Бут, відомий як Павлюк, був одним із найвпливовіших лідерів нереєстрового козацтва. Його рання біографія тісно пов'язана з морськими походами. Його вважали рішучим противником будь-яких компромісів із Річчю Посполитою. Він підтримував тісні зв'язки з низовим козацтвом, яке відчувало себе обманутим офіційними угодами. ...</p>
+                </article>
+                <article>
+                    <h4>Причини Виступу</h4>
+                    <p>Основною причиною повстання було різке обмеження прав та свобод козаків після угод 1625 та 1630 років. Реєстр був штучно зменшений, а козацька старшина втратила виборність. Це створило ґрунт для соціального вибуху, оскільки до руху масово приєдналися селяни та міщани, які шукали захисту від шляхетського свавілля. ...</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="chronology-section" class="content-module">
+            <h3 class="module-title">⏳ Хронологія Ключових Подій (1637-1638)</h3>
+            <div class="timeline-container">
+                <div class="timeline-event" data-month="ТРАВЕНЬ">
+                    <div class="event-year">1637</div>
+                    <div class="event-details">
+                        <h4>Травень: Початок Повстання</h4>
+                        <p>Павлюк із Січі виступає на волості, захоплює артилерію у Черкасах. Початок відкритого військового конфлікту з Польщею.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-month="ЛИПЕНЬ">
+                    <div class="event-year">1637</div>
+                    <div class="event-details">
+                        <h4>Липень: Розширення впливу</h4>
+                        <p>Повстання охоплює Лівобережжя. До Павлюка масово приєднуються нереєстрові козаки та селяни.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-month="ГРУДЕНЬ">
+                    <div class="event-year">1637</div>
+                    <div class="event-details">
+                        <h4>Грудень: Битва під Кумейками</h4>
+                        <p>3 (13) грудня 1637 р. — козаки розбиті військами Потоцького. Поразка, яка визначила подальшу долю повстання.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-month="ЛЮТИЙ">
+                    <div class="event-year">1638</div>
+                    <div class="event-details">
+                        <h4>Лютий: Арешт та Страта</h4>
+                        <p>Павлюка схоплено під час переговорів під Боровицею. У березні 1638 р. страчений у Варшаві.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-controls">
+                <button id="show-more-events" class="timeline-button">Показати Більше Деталей Хронології (+)</button>
+            </div>
+
+            <div id="extra-events" style="display:none;">
+                <p style="color: var(--color-accent-gold); text-align: center; margin-top: 20px;">[ДОДАТКОВІ ІСТОРИЧНІ ФАКТИ:]</p>
+                <div class="timeline-event" style="padding: 20px 0; border-bottom: 1px dashed #444;">
+                    <h4 style="color: var(--color-accent-red); margin-left: 20px;">1635 р. Серпень: Знищення Кодаку</h4>
+                    <p style="margin-left: 20px;">За два роки до основного повстання Павлюк брав участь у погромі фортеці Кодак разом з Іваном Сулимою. Цей епізод свідчить про його непримиренність до польського панування.</p>
+                </div>
+                <div class="timeline-event" style="padding: 20px 0; border-bottom: 1px dashed #444;">
+                    <h4 style="color: var(--color-accent-red); margin-left: 20px;">1637 р. Листопад: Приєднання Гуні</h4>
+                    <p style="margin-left: 20px;">До військ Павлюка приєднуються загони, очолювані Дмитром Гунею. Це об'єднання сил дало повстанцям тимчасову перевагу, але не змогло змінити результат під Кумейками.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="facts-module" class="content-module">
+            <h3 class="module-title">💡 Цікаві Факти</h3>
+            <div class="fact-interface-card" style="text-align: center;">
+                <p id="current-fact" class="fact-display-text" style="font-size: 1.2em; min-height: 100px; display: flex; align-items: center; justify-content: center;"></p>
+                <button id="next-fact-btn" class="fact-toggle-button" style="margin-top: 20px;">Наступний Факт</button>
+            </div>
+        </section>
+        
+        <section id="media-module" class="content-module">
+            <h3 class="module-title">📺 Рекомендовані Відеоматеріали</h3>
+            <p class="media-intro" style="text-align:center; color: var(--color-accent-gold);"></p>
+            <div class="link-list-grid">
+                <div class="media-link-item">
+                    <a href="https://www.youtube.com/watch?v=qoPvi11YT4o" target="_blank" class="video-link-style">
+                        **1. Історія козацтва: Повстання Павлюка.**
+                    </a>
+                </div>
+                <div class="media-link-item">
+                    <a href="https://www.youtube.com/watch?v=NVYZzWaag8w" target="_blank" class="video-link-style">
+                        **2. Хроніки 17 століття: Визвольні рухи. 13:04**
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="author-section" class="content-module">
+            <h3 class="module-title">👨‍💻 Автор та Виконавець Проєкту</h3>
+            <div class="author-info">
+                <h4>ВИКОНАВЕЦЬ: ЛІННИК ІЛЛЯ</h4>
+                <p>Цей історико-аналітичний проєкт був створений **Лінником Іллею** для демонстрації глибокого розуміння ключових подій Козацької Доби та навичок веб-розробки.</p>
+                <p style="color: var(--color-accent-gold); font-weight: bold;">**Дисципліна:** Історія України / Інформатика.</p>
+                <p>Всі інтерактивні елементи та оформлення виконані особисто.</p>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer-module">
+        <p>Історична пам'ять та шана Героям. 🇺🇦</p>
+        <p id="char-count">Кількість символів у тексті: *Підрахунок...</p>
+        <a href="#top" class="back-to-top">Нагору ↑</a>
+    </footer>
+    
+    <script>
+        const facts = [
+            "1. Павлюк — це прізвисько, яке отримав Павло Бут. Історики припускають, що воно може бути пов'язане з його рангом або фізичними особливостями.",
+            "2. Його повстання вважається прелюдією до Визвольної війни Богдана Хмельницького, демонструючи високий рівень соціальної напруги.",
+            "3. На початку повстання Павлюк зміг залучити до своїх лав близько 10 тисяч козаків, що було значною силою на той час.",
+            "4. Битва під Кумейками була однією з найжорстокіших у 17 столітті, під час якої козаки билися до останнього.",
+            "5. Після поразки, козаки, які здалися, видали Павлюка, що є трагічним прикладом розколу в козацькому середовищі.",
+            "6. Страта Павлюка у Варшаві викликала хвилю обурення та стала одним із каталізаторів наступного великого повстання 1638 року (Острянин і Гуня).",
+            "7. Павлюк був гетьманом нереєстрового козацтва, тобто він був обраний простою козацькою масою, а не призначений Польщею.",
+            "8. Фортеця Кодак, яку він допомагав зруйнувати, була ключовим елементом контролю Польщі над Запоріжжям.",
+            "9. Основні бойові дії повстання відбувалися на Лівобережжі, де Польща мала менший військовий контроль.",
+            "10. Його вимоги були зосереджені на відновленні козацьких вольностей та припиненні утисків православної віри.",
+            "11. Деякі реєстрові козаки на чолі зі старшиною, як-от Ілляш Караїмович, перейшли на бік Польщі, що послабило сили Павлюка.",
+            "12. Легенда про Павлюка збереглася у народних піснях та думах, підкреслюючи його роль як захисника України."
+        ];
+
+        let currentFactIndex = 0;
+        const factDisplay = document.getElementById('current-fact');
+        const nextFactButton = document.getElementById('next-fact-btn');
+        const showMoreBtn = document.getElementById('show-more-events');
+        const extraEventsDiv = document.getElementById('extra-events');
+
+        /**
+         * Функція для відображення наступного факту.
+         */
+        function displayNextFact() {
+            const fadeDuration = 300;
+            const factText = factDisplay;
+            
+            if (factText) factText.style.opacity = 0;
+            
+            setTimeout(() => {
+                if (factText) {
+                    factText.textContent = facts[currentFactIndex];
+                    currentFactIndex = (currentFactIndex + 1) % facts.length;
+                    
+                    setTimeout(() => {
+                        if (factText) factText.style.opacity = 1;
+                    }, 50);
+                }
+            }, fadeDuration);
+        }
+
+        /**
+         * Функція для інтерактивної кнопки "Показати більше" (Хронологія).
+         */
+        function setupTimelineToggle() {
+            if (showMoreBtn && extraEventsDiv) {
+                showMoreBtn.addEventListener('click', () => {
+                    if (extraEventsDiv.style.display === 'none') {
+                        extraEventsDiv.style.display = 'block';
+                        showMoreBtn.textContent = 'СКРИТИ ДОДАТКОВІ ДЕТАЛІ (-)';
+                    } else {
+                        extraEventsDiv.style.display = 'none';
+                        showMoreBtn.textContent = 'ПОКАЗАТИ БІЛЬШЕ ДЕТАЛЕЙ ХРОНОЛОГІЇ (+)';
+                    }
+                });
+            }
+        }
+        
+        /**
+         * Функція для підрахунку символів.
+         */
+        function countCharacters() {
+            // Отримуємо весь текст з тіла документа
+            const bodyText = document.body.innerText;
+            
+            // Виключаємо пробіли, символи нового рядка та символи, що використовуються для оформлення
+            const count = bodyText
+                .replace(/\s+/g, '') 
+                .replace(/[\n\r\t]/g, '') 
+                .replace(/[\[\]\(\)\-\+\,\.\;\:\*\—\/\\]/g, '') 
+                .length;
+            
+            const countElement = document.getElementById('char-count');
+            if (countElement) {
+                countElement.textContent = `Кількість символів у тексті (без пробілів та оформлення): ${count}`;
+            }
+        }
+
+        // Ініціалізація
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Ініціалізація фактів
+            if (factDisplay) {
+                factDisplay.textContent = facts[currentFactIndex];
+                currentFactIndex = (currentFactIndex + 1) % facts.length;
+                factDisplay.style.opacity = 1;
+            }
+            
+            if (nextFactButton) {
+                nextFactButton.addEventListener('click', displayNextFact);
+            }
+            
+            // 2. Запуск функціоналу
+            setupTimelineToggle(); 
+            countCharacters(); // Запускаємо підрахунок символів
+
+            // 3. Налаштування плавного прокручування
+            document.querySelectorAll('.navigation-module a, .back-to-top').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
